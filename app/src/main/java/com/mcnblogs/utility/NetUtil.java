@@ -37,6 +37,9 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Log;
 
+/**
+ * xml操作类
+ */
 public class NetUtil {
 	/**
 	 * 获取DefaultHttpClient实例
