@@ -145,6 +145,7 @@ public class HomePageFragment extends Fragment {
 		BlogListAdapter adapter = new BlogListAdapter(getActivity(),
 				R.layout.homepage_item, list);
 		lv.setAdapter(adapter);
+		//lv.setDividerHeight(0);//隐藏分割线
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

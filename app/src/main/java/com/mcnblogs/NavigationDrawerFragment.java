@@ -60,6 +60,9 @@ public class NavigationDrawerFragment extends Fragment {
 	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
 
+	/**
+	 * Instantiates a new Navigation drawer fragment.
+	 */
 	public NavigationDrawerFragment() {
 	}
 
@@ -115,6 +118,11 @@ public class NavigationDrawerFragment extends Fragment {
 		return mDrawerListView;
 	}
 
+	/**
+	 * Is drawer open boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean isDrawerOpen() {
 		return mDrawerLayout != null
 				&& mDrawerLayout.isDrawerOpen(mFragmentContainerView);
@@ -123,11 +131,9 @@ public class NavigationDrawerFragment extends Fragment {
 	/**
 	 * Users of this fragment must call this method to set up the navigation
 	 * drawer interactions.
-	 * 
-	 * @param fragmentId
-	 *            The android:id of this fragment in its activity's layout.
-	 * @param drawerLayout
-	 *            The DrawerLayout containing this fragment's UI.
+	 *
+	 * @param fragmentId   The android:id of this fragment in its activity's layout.
+	 * @param drawerLayout The DrawerLayout containing this fragment's UI.
 	 */
 	public void setUp(int fragmentId, DrawerLayout drawerLayout) {
 		mFragmentContainerView = getActivity().findViewById(fragmentId);
@@ -271,11 +277,11 @@ public class NavigationDrawerFragment extends Fragment {
 			return true;
 		}
 
-		if (item.getItemId() == R.id.action_example) {
-			Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT)
-					.show();
-			return true;
-		}
+//		if (item.getItemId() == R.id.action_example) {
+//			Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT)
+//					.show();
+//			return true;
+//		}
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -303,6 +309,8 @@ public class NavigationDrawerFragment extends Fragment {
 	public static interface NavigationDrawerCallbacks {
 		/**
 		 * Called when an item in the navigation drawer is selected.
+		 *
+		 * @param position the position
 		 */
 		void onNavigationDrawerItemSelected(int position);
 	}
