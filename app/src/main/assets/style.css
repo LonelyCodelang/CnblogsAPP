@@ -1,0 +1,16 @@
+
+body{font-family:Helvetica,"Microsoft Yahei",Verdana,Helvetica,SimSun,Arial,"Arial Unicode MS",MingLiu,PMingLiu,"MS Gothic",sans-serief;margin:0;padding:0;background-color:#efeff0;color:#333;word-wrap:break-word;}
+p{margin-top:0;margin-bottom:5pt;line-height: 1.6em;}
+img{max-width:90%;height:auto;}
+div.bimg{text-align:center;padding:0;}
+audio{width:100%}
+#header{text-align:center;background:transparent url('webBgLine.png') repeat-x scroll center bottom; padding-top:0pt;padding-left:0pt;padding-right:0pt;margin-bottom:5pt;-webkit-background-size:320px 2px;background-color: #2196F3;}
+#header h3{margin-bottom:0px; margin-top:0px;font-size:16pt;padding:5;color:white;line-height:1.3em;}
+.date{color:white;font-size:12pt;padding:8pt 0;}
+*{-webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.15);
+
+}
+@media screen and (-webkit-device-pixel-ratio: 2) {
+    #header{background-image:transparent url('webBgLine@2x.png') repeat-x scroll center bottom;-webkit-background-size:320px 1px;}
+}

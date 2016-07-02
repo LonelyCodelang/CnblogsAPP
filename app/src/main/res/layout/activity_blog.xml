@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#2196F3" >
+
+        <ImageButton
+            android:id="@+id/blog_btn_break"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="#00000000"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_blogtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="博客正文"
+            android:textColor="#FFFFFF"
+            android:textSize="22dp" />
+    </RelativeLayout>
+          <WebView
+                android:id="@+id/blog_body_webview_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+<!--     <ScrollView -->
+<!--         android:id="@+id/scrollView1" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" > -->
+        
+      
+
+<!--         <FrameLayout -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="match_parent" > -->
+
+<!--         </FrameLayout> -->
+<!--     </ScrollView> -->
+
+</LinearLayout>
