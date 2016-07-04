@@ -29,7 +29,7 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 	private View view;
 
 	public BlogListAdapter(Context context, int resource,
-			List<BlogListDTO> listobjs) {
+						   List<BlogListDTO> listobjs) {
 		super(context, resource, listobjs);
 		resourceid = resource;
 	}
@@ -37,12 +37,12 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		BlogListDTO dto = getItem(position);
 		if(convertView==null){
-			view = LayoutInflater.from(getContext()).inflate(resourceid, null);	
+			view = LayoutInflater.from(getContext()).inflate(resourceid, null);
 		}
 		else{
 			view=convertView;
 		}
-		
+
 		TextView title = (TextView) view.findViewById(R.id.title);
 		TextView context = (TextView) view.findViewById(R.id.tv_context);
 		TextView authorName = (TextView) view.findViewById(R.id.authorName);
@@ -54,29 +54,29 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 		if (dto.getPublished() != null) {
 			published.setText(DateUtil.ToString2(dto.getPublished()));
 		}
-		
+
 		if(dto.getAvatarUrl()!=null && dto.getAvatarUrl()!=""){
 			SetAvatarImg(dto.getAvatarUrl());
 		}
-	
-		
+
+
 
 		return view;
 	}
-	
+
 	/**
-	 * 设置坐着图像
+	 * 璁剧疆鍧愮潃鍥惧儚
 	 * @param ImgUrl
 	 */
 	private void SetAvatarImg(String ImgUrl){
-		// 设置图片
-				// 主线程不能直接下载图片，需要用线程操作
+		// 璁剧疆鍥剧墖
+		// 涓荤嚎绋嬩笉鑳界洿鎺ヤ笅杞藉浘鐗囷紝闇�瑕佺敤绾跨▼鎿嶄綔
 //				HttpUtil.get(ImgUrl, new BinaryHttpResponseHandler() {
 //					@Override
 //					public void onSuccess(int statusCode, Header[] headers,
 //							byte[] responseBody) {
 //						Bitmap bitmap = BitmapFactory.decodeByteArray(responseBody, 0,
-//								responseBody.length); // 生成
+//								responseBody.length); // 鐢熸垚
 //						ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
 //						imgv.setImageBitmap(bitmap);
 //					}
@@ -87,8 +87,8 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 //						APPUtil.ShowMsg(getContext(), arg3.getMessage());
 //					}
 //				});
-				ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
-				Picasso.with(getContext())
+		ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
+		Picasso.with(getContext())
 				.load(ImgUrl)
 				.placeholder(R.drawable.ic_launcher)
 				.error(R.drawable.ic_launcher)

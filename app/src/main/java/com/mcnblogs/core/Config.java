@@ -1,42 +1,42 @@
 package com.mcnblogs.core;
 
 /**
- * UrlÅäÖÃ
+ * Urlé…ç½®
  */
 public class Config {
-	
+
 	/**
-	 * 48Ğ¡Ê±ÎÄÕÂÔÄ¶ÁÅÅĞĞ°ñ
+	 * 48å°æ—¶æ–‡ç« é˜…è¯»æ’è¡Œæ¦œ
 	 */
 	public static final String List48HoursTop_URL="http://wcf.open.cnblogs.com/blog/48HoursTopViewPosts/30";
 
 	/**
-	 * 10ÌìÍÆ¼öÅÅĞĞ°ñ
+	 * 10å¤©æ¨èæ’è¡Œæ¦œ
 	 */
-	public static  final String List10DayTop_URL="http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/20";
+	public static  final String List10DayTop_URL="http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/30";
 
 	/**
-	 * ĞÂÎÅ·ÖÒ³½Ó¿Ú
+	 * æ–°é—»åˆ†é¡µæ¥å£
 	 */
 	public  static final String ListNewsPage_URL="http://wcf.open.cnblogs.com/news/recent/paged/1/10";
 
 	/**
-	 * ĞÂÎÅÄÚÈİ
+	 * æ–°é—»å†…å®¹
 	 */
 	public  static  final String NewItem_URL="http://wcf.open.cnblogs.com/news/item/121853";
 
 	/**
-	 * ÎÄÕÂÕıÎÄUrl
+	 * æ–‡ç« æ­£æ–‡Url
 	 */
 	public static final String Body_URL="http://wcf.open.cnblogs.com/blog/post/body/{0}";
-	
+
 	/**
-	 * ±¾µØhtml
+	 * æœ¬åœ°html
 	 */
 	public static final String LOCAL_PATH = "file:///android_asset/";
-	
+
 	/**
-	 * È«¾Ö±àÂë·½Ê½
+	 * å…¨å±€ç¼–ç æ–¹å¼
 	 */
 	public static final String ENCODE_TYPE = "utf-8";// 
 }

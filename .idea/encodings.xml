@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/BlogActivity.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/Fragment/HomePageFragment.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/Fragment/NewsFragment.java" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/PlaceholderFragment.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/Task/PageDetailTask.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/adapter/BlogListAdapter.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/core/Config.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/dto/BlogListDTO.java" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/utility/NetUtil.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/Task/PageDetailTask.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/adapter/BlogListAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/core/Config.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/dto/BlogListDTO.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mcnblogs/utility/NetUtil.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
