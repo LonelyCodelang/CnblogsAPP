@@ -1,11 +1,29 @@
 package com.mcnblogs.core;
 
+/**
+ * Url配置
+ */
 public class Config {
 	
 	/**
 	 * 48小时文章阅读排行榜
 	 */
 	public static final String List48HoursTop_URL="http://wcf.open.cnblogs.com/blog/48HoursTopViewPosts/30";
+
+	/**
+	 * 10天推荐排行榜
+	 */
+	public static  final String List10DayTop_URL="http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/20";
+
+	/**
+	 * 新闻分页接口
+	 */
+	public  static final String ListNewsPage_URL="http://wcf.open.cnblogs.com/news/recent/paged/1/10";
+
+	/**
+	 * 新闻内容
+	 */
+	public  static  final String NewItem_URL="http://wcf.open.cnblogs.com/news/item/121853";
 
 	/**
 	 * 文章正文Url
