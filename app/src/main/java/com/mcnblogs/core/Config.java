@@ -23,7 +23,7 @@ public class Config {
 	/**
 	 * 新闻内容
 	 */
-	public  static  final String NewItem_URL="http://wcf.open.cnblogs.com/news/item/121853";
+	public  static  final String NewItem_URL="http://wcf.open.cnblogs.com/news/item/{0}";
 
 	/**
 	 * 文章正文Url

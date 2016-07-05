@@ -30,7 +30,7 @@ public class ReadFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		vi = inflater.inflate(R.layout.fragment_read, container, false);
-
+		Load();
 		return vi;
 	}
 
@@ -66,5 +66,28 @@ public class ReadFragment extends Fragment {
 	 */
 	private void AnalyBlogList(String json) {
 		final List<BlogListDTO> list = BlogJsonHelper.JsonToList(json);
+
+		ListView lv=(ListView)vi.findViewById(R.id.listViewBlog);
+		BlogListAdapter dap=new BlogListAdapter(getActivity(),R.layout.homepage_item,list);
+		lv.setAdapter(dap);
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+				BlogListDTO dto=list.get(position);
+
+				Intent intent = new Intent(getActivity(), BlogActivity.class);
+
+				// 新建Bundle对象
+				Bundle mBundle = new Bundle();
+				// 放入account对象
+				mBundle.putParcelable("blogdto",dto);
+				intent.putExtras(mBundle);
+
+
+				startActivity(intent);
+			}
+		});
+
 	}
 }

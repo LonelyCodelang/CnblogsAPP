@@ -99,13 +99,14 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 			HideFragement(tran);
 //			message.setBackground(null);
 //			contacts.setBackground(null);
-			news.setBackground(null);
-			setting.setBackground(null);
+//			news.setBackground(null);
+			//setting.setBackground(null);
 
 			//设置初始状态
-			setMenuSelect("",R.id.message_image,R.drawable.icon_1_p,R.id.message_text);
+			setMenuSelect("",R.id.message_image,R.drawable.icon_11_p,R.id.message_text);
 			setMenuSelect("",R.id.contacts_image,R.drawable.icon_2_p,R.id.contacts_text);
-
+			setMenuSelect("",R.id.news_image,R.drawable.icon_3_p,R.id.news_text);
+			setMenuSelect("",R.id.setting_image,R.drawable.icon_4_p,R.id.setting_text);
 
 			int ClickInt = v.getId();
 			switch (ClickInt) {
@@ -115,7 +116,7 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 //						R.drawable.home_btn_bg_d));
 
 				// 设置选中
-				setMenuSelect("select",R.id.message_image,R.drawable.icon_1_ps,R.id.message_text);
+				setMenuSelect("select",R.id.message_image,R.drawable.icon_11_ps,R.id.message_text);
 
 				if (myHomePageFra == null) {
 					myHomePageFra = new HomePageFragment();
@@ -142,8 +143,10 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 				break;
 			case R.id.news_layout:
 				// 设置选中
-				news.setBackground(getResources().getDrawable(
-						R.drawable.home_btn_bg_d));
+//				news.setBackground(getResources().getDrawable(
+//						R.drawable.home_btn_bg_d));
+				// 设置选中
+				setMenuSelect("select",R.id.news_image,R.drawable.icon_3_ps,R.id.news_text);
 
 				if (myNewsFra == null) {
 					myNewsFra = new NewsFragment();
@@ -155,8 +158,9 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 				break;
 			case R.id.setting_layout:
 				// 设置选中
-				setting.setBackground(getResources().getDrawable(
-						R.drawable.home_btn_bg_d));
+//				setting.setBackground(getResources().getDrawable(
+//						R.drawable.home_btn_bg_d));
+				setMenuSelect("select",R.id.setting_image,R.drawable.icon_4_ps,R.id.setting_text);
 
 				if (mySetingFra == null) {
 					mySetingFra = new SetingFragment();
