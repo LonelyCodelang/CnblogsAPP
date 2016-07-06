@@ -2,6 +2,8 @@ package com.mcnblogs.Fragment;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.mcnblogs.BlogActivity;
+import com.mcnblogs.NewActivity;
 import com.mcnblogs.R;
 import com.mcnblogs.adapter.NewListAdapter;
 import com.mcnblogs.core.Config;
@@ -11,6 +13,7 @@ import com.mcnblogs.utility.HttpUtil;
 import com.mcnblogs.utility.XmlJSON;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -81,7 +84,16 @@ public class NewsFragment extends Fragment {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     NewDTO.FeedBean.EntryBean dto = list.get(i);
 
-                    APPUtil.ShowMsg(getActivity(),dto.getTitle().getContent());
+                    Intent intent = new Intent(getActivity(), NewActivity.class);
+                    Gson gs=new Gson();
+                    String newDtoJson=gs.toJson(dto);
+                    // 新建Bundle对象
+                    Bundle mBundle = new Bundle();
+                    // 放入account对象
+                    mBundle.putString("newsdtojson",newDtoJson);
+                    intent.putExtras(mBundle);
+
+                    startActivity(intent);
                 }
             });
 

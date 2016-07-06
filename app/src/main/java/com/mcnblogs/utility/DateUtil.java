@@ -66,6 +66,8 @@ public class DateUtil {
 
 	}
 
+
+
 	/**
 	 * 将java.util.Date 格式转换为字符串格式'yyyy-MM-dd HH:mm:ss'(24小时制)<br>
 	 * 如Sat May 11 17:24:21 CST 2002 to '2002-05-11 17:24:21'<br>
@@ -91,7 +93,10 @@ public class DateUtil {
 		return ctime;
 	}
 
-
+	public static String toString3(String time){
+	  Date da=DateUtil.ToDate2(time);
+		return  DateUtil.ToString(da);
+	}
 	/**
 	 * 将java.util.Date 格式转换为字符串格式'yyyy-MM-dd HH:mm:ss a'(12小时制)<br>
 	 * 如Sat May 11 17:23:22 CST 2002 to '2002-05-11 05:23:22 下午'<br>

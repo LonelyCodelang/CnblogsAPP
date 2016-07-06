@@ -55,27 +55,21 @@ public class BlogActivity extends Activity {
 		// WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_blog);
 
-		Parcelable parcelable = this.getIntent().getParcelableExtra("blogdto");
-		dto = (BlogListDTO) parcelable;
-
-		// 新页面接收数据
-		// Bundle bundle = this.getIntent().getExtras();
-		//
-		// String Title = bundle.getString("title");
-
-		// TextView tvTitle = (TextView) findViewById(R.id.tv_title);
-		// tvTitle.setText(dto.getTitle());
-
+		//返回上一级activity
 		ImageView btn_break = (ImageView) findViewById(R.id.blog_btn_break);
 		btn_break.setOnClickListener(onclick);
+
+
+		Parcelable parcelable = this.getIntent().getParcelableExtra("blogdto");
+		dto = (BlogListDTO) parcelable;
 
 		wbView = (WebView) findViewById(R.id.blog_body_webview_content);
 		String url = Config.Body_URL.replace("{0}", dto.getId());
 
 		wbView.getSettings().setDefaultTextEncodingName("utf-8");// 避免中文乱码
-		wbView.addJavascriptInterface(this, "javatojs");
+		//wbView.addJavascriptInterface(this, "javatojs");
 		wbView.setSelected(true);
-		wbView.setScrollBarStyle(0);
+		//wbView.setScrollBarStyle(0);
 		/**
 		 WebSettings webSetting = wbView.getSettings();
 		 webSetting.setJavaScriptEnabled(true);
@@ -165,7 +159,7 @@ public class BlogActivity extends Activity {
 			Log.i("时间日期:",timeStr);
 			String blogInfo = "作者: " + dto.getAuthorName() + "   发表时间:"
 					+ timeStr + "  查看:"
-					+ dto.getViews().toString();
+					+ dto.getViews();
 
 			// 格式化html
 			// _blogContent = AppUtil.FormatContent(getApplicationContext(),
