@@ -18,7 +18,7 @@ public class Config {
 	/**
 	 * 新闻分页接口
 	 */
-	public  static final String ListNewsPage_URL="http://wcf.open.cnblogs.com/news/recent/paged/1/10";
+	public  static final String ListNewsPage_URL="http://wcf.open.cnblogs.com/news/recent/paged/1/20";
 
 	/**
 	 * 新闻内容
