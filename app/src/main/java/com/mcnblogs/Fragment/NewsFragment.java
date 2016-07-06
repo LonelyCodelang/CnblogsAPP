@@ -1,19 +1,25 @@
 package com.mcnblogs.Fragment;
 
+import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.mcnblogs.R;
 import com.mcnblogs.core.Config;
+import com.mcnblogs.dto.NewDTO;
 import com.mcnblogs.utility.APPUtil;
 import com.mcnblogs.utility.HttpUtil;
 import com.mcnblogs.utility.XmlJSON;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.apache.http.Header;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +61,15 @@ public class NewsFragment extends Fragment {
 	 */
 	private  void JsonAnalysis(String strJson){
 		String resJson = XmlJSON.xml2JSON(strJson);// 将xml转换成字符串
-		String xx=resJson;
+		try {
+			Gson gs=new Gson();
+			NewDTO dto=gs.fromJson(resJson,NewDTO.class);//序列化json
+			List<NewDTO.FeedBean.EntryBean> list= dto.getFeed().getEntry();
+			
+
+		}catch (Exception ex){
+			String msg=ex.getMessage();
+			Log.e("json转换错误",msg);
+		}
 	}
 }
