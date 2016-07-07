@@ -2,12 +2,224 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+        <android.support.v7.widget.LinearLayoutCompat
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="232dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/textView5"
+                    android:layout_below="@+id/imageView"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="基本设置"
+                    android:textColor="#0077D9"
+                    android:textSize="14sp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/textView" />
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="省流量模式"
+                        android:textColor="#232323"
+                        android:textSize="16sp"
+                        android:id="@+id/textView2"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="仅在Wi-Fi环境下才会自动加载图片"
+                        android:id="@+id/textView3"
+                        android:layout_below="@+id/textView2"
+                        android:layout_alignStart="@+id/textView2" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/switch1"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="fill_parent"
+                    android:background="#DCDCDC"
+                    android:layout_height="2dp"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="摇动发送反馈"
+                        android:textColor="#232323"
+                        android:textSize="16sp"
+                        android:id="@+id/textViewx2"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="遇到问题？摇一摇手机就能反馈~"
+                        android:id="@+id/textViewx3"
+                        android:layout_below="@+id/textViewx2"
+                        android:layout_alignStart="@+id/textViewx2" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/switchx1"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="fill_parent"
+                    android:background="#DCDCDC"
+                    android:layout_height="2dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0077D9"
+                    android:textSize="14sp"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="20dp"
+                    android:text="通知设置"
+                    android:id="@+id/textView4" />
+
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="全局消息与邮件"
+                        android:textColor="#232323"
+                        android:textSize="16sp"
+                        android:id="@+id/textViewc2"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="会影响到客户端与网页版"
+                        android:id="@+id/textViewc3"
+                        android:layout_below="@+id/textViewc2"
+                        android:layout_alignStart="@+id/textViewc2" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/switchc1"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginTop="20dp"
+                    android:layout_width="fill_parent"
+                    android:background="#DCDCDC"
+                    android:layout_height="2dp"/>
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="推送消息设置"
+                        android:textColor="#232323"
+                        android:textSize="16sp"
+                        android:id="@+id/textViewd2"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="只影响客户端的通知推送"
+                        android:id="@+id/textViewd3"
+                        android:layout_below="@+id/textViewd2"
+                        android:layout_alignStart="@+id/textViewd2" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/switchd1"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+    </ScrollView>
 </LinearLayout>
