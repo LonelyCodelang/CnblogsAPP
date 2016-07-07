@@ -7,6 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:id="@+id/scrollView">
         <android.support.v7.widget.LinearLayoutCompat
             android:orientation="vertical"
@@ -15,27 +16,127 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="80dp"
                 android:layout_centerVertical="true">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="232dp" />
+                    android:id="@+id/img_ioc1"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_eye_grey_24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Text"
-                    android:id="@+id/textView5"
-                    android:layout_below="@+id/imageView"
-                    android:layout_alignParentStart="true" />
+                    android:layout_marginLeft="55dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#727272"
+                    android:textSize="18sp"
+                    android:text="我的关注"
+                    android:id="@+id/textView5" />
             </RelativeLayout>
+            <View
+                android:layout_marginLeft="55dp"
+                android:layout_width="fill_parent"
+                android:background="#DCDCDC"
+                android:layout_height="1dp"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_ioc2"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_shouchang"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="55dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#727272"
+                    android:textSize="18sp"
+                    android:text="我的收藏"
+                    android:id="@+id/tv_title2" />
+            </RelativeLayout>
+            <View
+                android:layout_marginLeft="55dp"
+                android:layout_width="fill_parent"
+                android:background="#DCDCDC"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_ioc3"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_caogao"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="55dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#727272"
+                    android:textSize="18sp"
+                    android:text="我的草稿"
+                    android:id="@+id/tv_title3" />
+            </RelativeLayout>
+            <View
+                android:layout_marginLeft="55dp"
+                android:layout_width="fill_parent"
+                android:background="#DCDCDC"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_ioc4"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_liulan"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="55dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#727272"
+                    android:textSize="18sp"
+                    android:text="最近浏览"
+                    android:id="@+id/tv_title4" />
+            </RelativeLayout>
+            <View
+                android:layout_marginLeft="55dp"
+                android:layout_width="fill_parent"
+                android:background="#DCDCDC"
+                android:layout_height="1dp"/>
 
             <LinearLayout
                 android:orientation="vertical"
