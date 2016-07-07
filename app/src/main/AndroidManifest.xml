@@ -22,7 +22,8 @@
             android:name=".BlogActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name=".Main2Activityxxx" />
-        <activity android:name=".NewActivity"></activity>
+        <activity android:name=".NewActivity" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>
