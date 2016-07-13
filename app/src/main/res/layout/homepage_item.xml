@@ -38,11 +38,11 @@
                 android:id="@+id/avatarUrl"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_alignBottom="@+id/linearLayout1"
+
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="5dp"
-                android:background="#ABCDEF"
+         
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_launcher" />
 

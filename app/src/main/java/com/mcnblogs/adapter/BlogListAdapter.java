@@ -6,6 +6,7 @@ import org.apache.http.Header;
 import org.w3c.dom.Text;
 
 import com.loopj.android.http.BinaryHttpResponseHandler;
+import com.mcnblogs.Extends.CircleTransform;
 import com.mcnblogs.R;
 import com.mcnblogs.dto.BlogListDTO;
 import com.mcnblogs.utility.APPUtil;
@@ -92,6 +93,7 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 				.load(ImgUrl)
 				.placeholder(R.drawable.ic_launcher)
 				.error(R.drawable.ic_launcher)
+				.transform(new CircleTransform())
 				.into(imgv);
 	}
 
