@@ -1,6 +1,7 @@
 package com.mcnblogs.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mcnblogs.Extends.CircleTransform;
 import com.mcnblogs.R;
 import com.mcnblogs.dto.NewDTO;
 import com.squareup.picasso.Picasso;
@@ -51,13 +53,29 @@ public class NewListAdapter extends ArrayAdapter<NewDTO.FeedBean.EntryBean> {
      * @param url
      */
     private void SetImg(String url){
-        if(!url.isEmpty()){
-            ImageView imgv=(ImageView)view.findViewById(R.id.img_ioc);
-            Picasso.with(getContext())
-                    .load(url)
-                    .placeholder(R.drawable.ic_launcher)
-                    .error(R.drawable.ic_launcher)
-                    .into(imgv);
-        }
+
+            try{
+                if(!url.isEmpty()){
+                    ImageView imgv=(ImageView)view.findViewById(R.id.img_ioc);
+                    if(url.contains(".gif")){
+                        //如果是gif的图片则不能处理，会出错误
+                        Picasso.with(getContext())
+                                .load(url)
+                                .placeholder(R.drawable.ic_launcher)
+                                .error(R.drawable.ic_launcher)
+                                .into(imgv);
+                    }else{
+                        Picasso.with(getContext())
+                                .load(url)
+                                .transform(new CircleTransform())
+                                .placeholder(R.drawable.ic_launcher)
+                                .error(R.drawable.ic_launcher)
+                                .into(imgv);
+                    }
+
+                }
+            }catch (Exception ex){
+                Log.e("图片加载错误",ex.getMessage());
+            }
     }
 }
