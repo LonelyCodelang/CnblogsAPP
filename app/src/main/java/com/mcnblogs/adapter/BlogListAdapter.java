@@ -1,5 +1,6 @@
 package com.mcnblogs.adapter;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -57,9 +58,20 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 		}
 
 		if(dto.getAvatarUrl()!=null && dto.getAvatarUrl()!=""){
-			SetAvatarImg(dto.getAvatarUrl());
+			SetAvatarImg(dto.getAvatarUrl());//设置图片
 		}
-
+		String strViewNum=dto.getViews();
+		if(!strViewNum.isEmpty()){
+			double viewNum=Double.parseDouble(strViewNum);
+			if(viewNum>=1000){
+				viewNum=viewNum/1000;
+				NumberFormat ddf1=NumberFormat.getNumberInstance() ;
+				ddf1.setMaximumFractionDigits(1);//保留1位小数
+				strViewNum=ddf1.format(viewNum)+"k";
+			}
+		}
+		TextView tv_viewNum=(TextView)view.findViewById(R.id.tv_viewnum);
+		tv_viewNum.setText(strViewNum);
 
 
 		return view;
