@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 		}
 
 		if(dto.getAvatarUrl()!=null && dto.getAvatarUrl()!=""){
+			Log.d("图片路径",dto.getAvatarUrl());
 			SetAvatarImg(dto.getAvatarUrl());//设置图片
 		}
 		String strViewNum=dto.getViews();
@@ -100,13 +102,16 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 //						APPUtil.ShowMsg(getContext(), arg3.getMessage());
 //					}
 //				});
-		ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
-		Picasso.with(getContext())
-				.load(ImgUrl)
-				.placeholder(R.drawable.ic_launcher)
-				.error(R.drawable.ic_launcher)
-				.transform(new CircleTransform())
-				.into(imgv);
+		if(!ImgUrl.contains(".gif")){
+			ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
+			Picasso.with(getContext())
+					.load(ImgUrl)
+					.placeholder(R.drawable.ic_launcher)
+					.error(R.drawable.ic_launcher)
+					.transform(new CircleTransform())
+					.into(imgv);
+		}
+
 	}
 
 }

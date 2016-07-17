@@ -13,7 +13,7 @@ public class Config {
 	/**
 	 * 10天推荐排行榜
 	 */
-	public static  final String List10DayTop_URL="http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/30";
+	public static  final String List10DayTop_URL="http://wcf.open.cnblogs.com/blog/TenDaysTopDiggPosts/{num}";
 
 	/**
 	 * 新闻分页接口

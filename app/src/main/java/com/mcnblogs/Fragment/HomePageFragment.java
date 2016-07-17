@@ -31,6 +31,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -38,19 +39,20 @@ import android.widget.ListView;
 public class HomePageFragment extends Fragment {
 
 	private View view;
-
+    private  List<BlogListDTO> list;
+	private  int startNum=15;//开始页码15，每次加15
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_homepage, container, false);
-		Load();
+		Load(startNum);
 		return view;
 	}
 
 	/**
 	 * 加载数据
 	 */
-	private void Load() {
-		String url =Config.List10DayTop_URL;
+	private void Load(int num) {
+		String url =Config.List10DayTop_URL.replace("{num}",Integer.toString(num));
 		HttpUtil.get(url, new AsyncHttpResponseHandler() {
 
 			@Override
@@ -87,34 +89,62 @@ public class HomePageFragment extends Fragment {
 	 * 解析博客列表
 	 */
 	private void AnalyBlogList(String json) {
-		final List<BlogListDTO> list = BlogJsonHelper.JsonToList(json);
+		if(list==null){list=new ArrayList<BlogListDTO>();}
+		list.addAll(BlogJsonHelper.JsonToList(json));
+
 
 		ListView lv = (ListView) view.findViewById(R.id.listView1);
 		BlogListAdapter adapter = new BlogListAdapter(getActivity(),
 				R.layout.homepage_item, list);
 		lv.setAdapter(adapter);
 		//lv.setDividerHeight(0);//隐藏分割线
-		lv.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-									int position, long id) {
-				BlogListDTO item = list.get(position);
-
-				Intent intent = new Intent(getActivity(), BlogActivity.class);
-
-				// 新建Bundle对象
-				Bundle mBundle = new Bundle();
-				// 放入account对象
-				mBundle.putParcelable("blogdto",item);
-				intent.putExtras(mBundle);
-
-
-				startActivity(intent);
-			}
-
-		});
-
+		lv.setOnItemClickListener(myItemClick);//item单击事件
+		lv.setOnScrollListener(myScrol);//滚动事件
 	}
+
+	/**
+	 * 分类项点击事件
+	 */
+	private OnItemClickListener myItemClick=new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view,
+								int position, long id) {
+			BlogListDTO item = list.get(position);
+
+			Intent intent = new Intent(getActivity(), BlogActivity.class);
+
+			// 新建Bundle对象
+			Bundle mBundle = new Bundle();
+			// 放入account对象
+			mBundle.putParcelable("blogdto",item);
+			intent.putExtras(mBundle);
+
+
+			startActivity(intent);
+		}
+	};
+
+	/**
+	 * listView滚动事件
+	 */
+	private AbsListView.OnScrollListener myScrol=new AbsListView.OnScrollListener() {
+		@Override
+		public void onScrollStateChanged(AbsListView absListView, int i) {
+
+		}
+
+		@Override
+		public void onScroll(AbsListView view, int firstVisibleItem,
+							 int visibleItemCount, int totalItemCount) {
+			if (firstVisibleItem + visibleItemCount == totalItemCount) {//判断是不是最后一个
+				APPUtil.ShowMsg(getActivity(),"到底部了"+startNum);
+				Log.i("页码:",Integer.toString(startNum));
+				startNum+=15;
+				Load(startNum);
+			}
+		}
+	};
+
+
 
 }
