@@ -7,6 +7,7 @@ import java.util.List;
 import com.mcnblogs.adapter.BlogListAdapter;
 import com.mcnblogs.core.BlogJsonHelper;
 import com.mcnblogs.core.Config;
+import com.mcnblogs.db.BloginfoDao;
 import com.mcnblogs.dto.*;
 import com.mcnblogs.utility.*;
 
@@ -89,8 +90,13 @@ public class HomePageFragment extends Fragment {
 	 * 解析博客列表
 	 */
 	private void AnalyBlogList(String json) {
-		if(list==null){list=new ArrayList<BlogListDTO>();}
-		list.addAll(BlogJsonHelper.JsonToList(json));
+		//if(list==null){list=new ArrayList<BlogListDTO>();}
+		//list.addAll(BlogJsonHelper.JsonToList(json));
+		List<BlogListDTO> list=BlogJsonHelper.JsonToList(json);
+//		for (BlogListDTO item : list ) {
+//			BloginfoDao.insert(item);
+//		}
+		BloginfoDao.insertBatch(list);
 
 
 		ListView lv = (ListView) view.findViewById(R.id.listView1);
