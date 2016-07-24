@@ -9,6 +9,7 @@ import com.mcnblogs.core.BlogJsonHelper;
 import com.mcnblogs.core.Config;
 import com.mcnblogs.db.BloginfoDao;
 import com.mcnblogs.dto.*;
+import com.mcnblogs.dto.myenum.BlogType;
 import com.mcnblogs.utility.*;
 
 import org.apache.http.Header;
@@ -96,7 +97,7 @@ public class HomePageFragment extends Fragment {
 //		for (BlogListDTO item : list ) {
 //			BloginfoDao.insert(item);
 //		}
-		BloginfoDao.insertBatch(list);
+		BloginfoDao.insertBatch(list, BlogType.type1.toString());
 
 
 		ListView lv = (ListView) view.findViewById(R.id.listView1);
