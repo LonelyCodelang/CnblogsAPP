@@ -126,6 +126,20 @@ public class BloginfoDao {
     }
 
     /**
+     *
+     * @param title 文章标题
+     * @return
+     */
+    public static int GetCountByTitle(String title){
+        int result=0;
+        String sql=" select count(1) as count from  "+BlogInfoTable.TABLE_NAME+" where  "+BlogInfoTable.TITLE+"='"+title+"'";
+        Cursor c=getReadble().rawQuery(sql,null);
+        c.moveToFirst();//光标移动到第一行
+        result=c.getInt(c.getColumnIndex("count")); //c.getString(c.getColumnIndex("count"));
+        return result;
+    }
+
+    /**
      * 获取数据列表
      * @param type 数据类型
      * @param page 页码

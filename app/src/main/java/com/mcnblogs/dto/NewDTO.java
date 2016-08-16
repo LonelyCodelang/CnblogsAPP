@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 作者：hl
  * 时间:2016/7/6 10:40
- * 说明:
+ * 说明:用来接收新闻列表的的对象
  */
 public class NewDTO {
 

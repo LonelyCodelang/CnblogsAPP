@@ -91,13 +91,18 @@ public class HomePageFragment extends Fragment {
 	 * 解析博客列表
 	 */
 	private void AnalyBlogList(String json) {
-		//if(list==null){list=new ArrayList<BlogListDTO>();}
-		//list.addAll(BlogJsonHelper.JsonToList(json));
+
+		//批量获取网络新数据
 		List<BlogListDTO> list=BlogJsonHelper.JsonToList(json);
-//		for (BlogListDTO item : list ) {
-//			BloginfoDao.insert(item);
-//		}
-		BloginfoDao.insertBatch(list, BlogType.type1.toString());
+
+		for (BlogListDTO item :list){
+			int count=BloginfoDao.GetCountByTitle(item.getTitle());
+			if(count<=0){
+				//插入数据库
+				BloginfoDao.insertBatch(list, BlogType.type1.toString());
+			}
+		}
+
 
 
 		ListView lv = (ListView) view.findViewById(R.id.listView1);
