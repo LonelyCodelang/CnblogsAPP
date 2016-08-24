@@ -148,11 +148,11 @@ public class BloginfoDao {
      */
     public static ArrayList<BlogListDTO> getList(String type,int pageIndex,int pageSize){
         ArrayList<BlogListDTO> result=new ArrayList<>();
-       // String sql=" select * from "+BlogInfoTable.TABLE_NAME+" where "+BlogInfoTable.BTYPE+"="+type+" order by id desc ase limit "+page;
+        String sql=" select * from "+BlogInfoTable.TABLE_NAME+" where "+BlogInfoTable.BTYPE+"='"+type+"' order by id  desc limit "+ pageSize +" offset "+pageSize*(pageIndex-1);
 
         //offset代表从第几条记录“之后“开始查询，limit表明查询多少条结果
-        String sql = String.format(" select * from {0} where {1}={2} order by id desc ase limit {0} offset {0}*{1} ",
-                BlogInfoTable.TABLE_NAME,BlogInfoTable.BTYPE,type,pageSize,pageIndex-1);
+       // String sql = String.format(" select * from {0} where {1}={2} order by id desc ase limit {0} offset {0}*{1} ",
+         //       BlogInfoTable.TABLE_NAME,BlogInfoTable.BTYPE,type,pageSize,pageIndex-1);
 
         Cursor c=getReadble().rawQuery(sql,null);
         while (c.moveToNext()){

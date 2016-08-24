@@ -28,6 +28,7 @@ import com.mcnblogs.utility.XmlJSON;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -42,18 +43,21 @@ import android.widget.ListView;
 public class HomePageFragment extends Fragment {
 
 	private View view;
-    private List<BlogListDTO> list;
+    private ArrayList<BlogListDTO> list;
 	private int startNum = 15;//开始页码15，每次加15
 	private int pageSize = 15;
 	private int pageIndex = 1;
 	private BlogListAdapter adapter;
+	SwipeRefreshLayout swip;//loading
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
-
+		//设置下拉刷新
 		setRefresh();
-		Load(startNum);
+
+		//加载数据源
+		loadListSource();
 		return view;
 	}
 
@@ -61,20 +65,62 @@ public class HomePageFragment extends Fragment {
 	 * 设置下拉刷新
 	 */
 	private  void setRefresh(){
-		SwipeRefreshLayout swip = (SwipeRefreshLayout) view.findViewById(R.id.swipload);
+		swip = (SwipeRefreshLayout) view.findViewById(R.id.swipload);
 		//swip.setOnRefreshListener();
 		// 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
 		swip.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
 				android.R.color.holo_orange_light, android.R.color.holo_red_light);
 		swip.setDistanceToTriggerSync(400);// 设置手指在屏幕下拉多少距离会触发下拉刷新
-	//	swip.setProgressBackgroundColor(R.color.red); // 设定下拉圆圈的背景
+		//swip.setProgressBackgroundColor(R.color.red); // 设定下拉圆圈的背景
 		swip.setSize(SwipeRefreshLayout.LARGE); // 设置圆圈的大小
+		swip.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				Log.i("首页","正在刷新");
+
+				startNum+=15;
+				LoadNetWorSource(startNum);//加载网络数据源
+
+				// 停止刷新
+				swip.setRefreshing(false);
+
+				//重新加载数据源
+				loadListSource();
+
+//				new Handler().postDelayed(new Runnable() {
+//					@Override
+//					public void run() {
+//						Log.i("首页","停止刷新");
+//						// 停止刷新
+//						swip.setRefreshing(false);
+//					}
+//				}, 5000); // 5秒后发送消息，停止刷新
+			}
+		});
 	}
 
 	/**
-	 * 加载数据
+	 * 加载列表数据源
 	 */
-	private void Load(int num) {
+	private  void  loadListSource(){
+		list = BloginfoDao.getList(BlogType.page1.toString(),pageIndex,pageSize);
+		ListView lv = (ListView) view.findViewById(R.id.listView1);
+		adapter = new BlogListAdapter(getActivity(),
+				R.layout.homepage_item, list);
+		lv.setAdapter(adapter);
+
+		//adapter.notifyDataSetChanged();
+		//lv.setDividerHeight(0);//隐藏分割线
+
+		lv.setOnItemClickListener(myItemClick);//item单击事件
+		lv.setOnScrollListener(myScrol);//滚动事件
+	}
+
+	/**
+	 * 加载网络数据
+	 */
+	private void LoadNetWorSource(int num) {
+		Log.i("页码:",Integer.toString(startNum));
 		String url =Config.List10DayTop_URL.replace("{num}",Integer.toString(num));
 		HttpUtil.get(url, new AsyncHttpResponseHandler() {
 
@@ -121,22 +167,10 @@ public class HomePageFragment extends Fragment {
 			if(count<=0){
 				//插入数据库
 				BloginfoDao.insert(item,BlogType.page1.toString());
+				Log.i("首页文章插入",item.getTitle());
 				//BloginfoDao.insertBatch(list, BlogType.type1.toString());
 			}
 		}
-
-
-
-		ListView lv = (ListView) view.findViewById(R.id.listView1);
-		adapter = new BlogListAdapter(getActivity(),
-				R.layout.homepage_item, list);
-		lv.setAdapter(adapter);
-
-		//adapter.notifyDataSetChanged();
-
-		//lv.setDividerHeight(0);//隐藏分割线
-		lv.setOnItemClickListener(myItemClick);//item单击事件
-		lv.setOnScrollListener(myScrol);//滚动事件
 	}
 
 	/**
@@ -176,8 +210,8 @@ public class HomePageFragment extends Fragment {
 			if (firstVisibleItem + visibleItemCount == totalItemCount) {//判断是不是最后一个
 				APPUtil.ShowMsg(getActivity(),"到底部了"+startNum);
 				Log.i("页码:",Integer.toString(startNum));
-				startNum+=15;
-				Load(startNum);
+				//startNum+=15;
+				//Load(startNum);
 			}
 		}
 	};
