@@ -7,69 +7,69 @@ import android.os.Parcelable;
 public class BlogListDTO implements Parcelable {
 
 	/**
-	 * ²©¿Íid
+	 * åšå®¢id
 	 */
 	private String id;
 
 	/**
-	 * ±êÌâ
+	 * æ ‡é¢˜
 	 */
 	private String title;
 
 	/**
-	 * ÄÚÈİ
+	 * å†…å®¹
 	 */
 	private String content;
 
 	/**
-	 * ×÷Õß²©¿ÍÊ×Ò³
+	 * ä½œè€…åšå®¢é¦–é¡µ
 	 */
 	private String authorUrl;
 
 	/**
-	 * ×÷ÕßÃû³Æ
+	 * ä½œè€…åç§°
 	 */
 	private String authorName;
 
 	/**
-	 * ×÷ÕßÍ¼ÏñUrl
+	 * ä½œè€…å›¾åƒUrl
 	 */
 	private String avatarUrl;
 
 	/**
-	 * ·¢²¼ÈÕÆÚ
+	 * å‘å¸ƒæ—¥æœŸ
 	 */
 	private Date published;
 
 	/**
-	 * ÎÄÕÂurl
+	 * æ–‡ç« url
 	 */
 	private String url;
 
 	/**
-	 * ÔÄ¶ÁÊı
+	 * é˜…è¯»æ•°
 	 */
 	private String views;
 
 	/**
-	 * ÍÆ¼öÊı
+	 * æ¨èæ•°
 	 */
 	private String diggs;
 
 	/**
-	 * ÆÀÂÛÊı
+	 * è¯„è®ºæ•°
 	 */
 	private String comments;
 
 	@Override
 	public int describeContents() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		return 0;
 	}
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		dest.writeString(this.id);
 		dest.writeString(this.title);
 		dest.writeString(this.content);
@@ -87,10 +87,10 @@ public class BlogListDTO implements Parcelable {
 
 	}
 
-	// Ìí¼ÓÒ»¸ö¾²Ì¬³ÉÔ±,ÃûÎªCREATOR,¸Ã¶ÔÏóÊµÏÖÁËParcelable.Creator½Ó¿Ú
+	// æ·»åŠ ä¸€ä¸ªé™æ€æˆå‘˜,åä¸ºCREATOR,è¯¥å¯¹è±¡å®ç°äº†Parcelable.Creatoræ¥å£
 	public static final Parcelable.Creator<BlogListDTO> CREATOR = new Parcelable.Creator<BlogListDTO>() {
 
-		// ´ÓParcelÖĞ¶ÁÈ¡Êı¾İ,·µ»Øworker¶ÔÏó
+		// ä»Parcelä¸­è¯»å–æ•°æ®,è¿”å›workerå¯¹è±¡
 		@Override
 		public BlogListDTO createFromParcel(Parcel in) {
 			BlogListDTO dto = new BlogListDTO();
@@ -124,7 +124,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param content
-	 *            ÒªÉèÖÃµÄ content
+	 *            è¦è®¾ç½®çš„ content
 	 */
 	public void setTitle(String content) {
 		this.title = content;
@@ -139,7 +139,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param authorUrl
-	 *            ÒªÉèÖÃµÄ authorUrl
+	 *            è¦è®¾ç½®çš„ authorUrl
 	 */
 	public void setAuthorUrl(String authorUrl) {
 		this.authorUrl = authorUrl;
@@ -154,7 +154,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param authorName
-	 *            ÒªÉèÖÃµÄ authorName
+	 *            è¦è®¾ç½®çš„ authorName
 	 */
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
@@ -169,7 +169,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param avatarUrl
-	 *            ÒªÉèÖÃµÄ avatarUrl
+	 *            è¦è®¾ç½®çš„ avatarUrl
 	 */
 	public void setAvatarUrl(String avatarUrl) {
 		this.avatarUrl = avatarUrl;
@@ -184,7 +184,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param published
-	 *            ÒªÉèÖÃµÄ published
+	 *            è¦è®¾ç½®çš„ published
 	 */
 	public void setPublished(Date published) {
 		this.published = published;
@@ -199,7 +199,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param url
-	 *            ÒªÉèÖÃµÄ url
+	 *            è¦è®¾ç½®çš„ url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -214,7 +214,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param views
-	 *            ÒªÉèÖÃµÄ views
+	 *            è¦è®¾ç½®çš„ views
 	 */
 	public void setViews(String views) {
 		this.views = views;
@@ -229,7 +229,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param diggs
-	 *            ÒªÉèÖÃµÄ diggs
+	 *            è¦è®¾ç½®çš„ diggs
 	 */
 	public void setDiggs(String diggs) {
 		this.diggs = diggs;
@@ -244,7 +244,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param comments
-	 *            ÒªÉèÖÃµÄ comments
+	 *            è¦è®¾ç½®çš„ comments
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
@@ -259,7 +259,7 @@ public class BlogListDTO implements Parcelable {
 
 	/**
 	 * @param content
-	 *            ÒªÉèÖÃµÄ content
+	 *            è¦è®¾ç½®çš„ content
 	 */
 	public void setContent(String content) {
 		this.content = content;
@@ -273,7 +273,7 @@ public class BlogListDTO implements Parcelable {
 	}
 
 	/**
-	 * @param id ÒªÉèÖÃµÄ id
+	 * @param id è¦è®¾ç½®çš„ id
 	 */
 	public void setId(String id) {
 		this.id = id;

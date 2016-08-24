@@ -29,30 +29,30 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 
 	private View view;
 
-	private RelativeLayout message;// Ê×Ò³°´Å¥
-	private RelativeLayout contacts;// ÎÄÕÂ°´Å¥
-	private RelativeLayout news;// ĞÂÎÅ°´Å¥
-	private RelativeLayout setting;// ÉèÖÃ°´Å¥
+	private RelativeLayout message;// é¦–é¡µæŒ‰é’®
+	private RelativeLayout contacts;// æ–‡ç« æŒ‰é’®
+	private RelativeLayout news;// æ–°é—»æŒ‰é’®
+	private RelativeLayout setting;// è®¾ç½®æŒ‰é’®
 
 	android.app.FragmentManager fragmentManager;
 
 	/**
-	 * Ê×Ò³ËéÆ¬
+	 * é¦–é¡µç¢ç‰‡
 	 */
 	HomePageFragment myHomePageFra;
 
 	/**
-	 * ĞÂÎÅËéÆ¬
+	 * æ–°é—»ç¢ç‰‡
 	 */
 	NewsFragment myNewsFra;
 
 	/**
-	 * ÔÄ¶ÁËéÆ¬
+	 * é˜…è¯»ç¢ç‰‡
 	 */
 	ReadFragment myReadFra;
 
 	/**
-	 * ÉèÖÃËéÆ¬
+	 * è®¾ç½®ç¢ç‰‡
 	 */
 	SetingFragment mySetingFra;
 
@@ -102,7 +102,7 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 //			news.setBackground(null);
 			//setting.setBackground(null);
 
-			//ÉèÖÃ³õÊ¼×´Ì¬
+			//è®¾ç½®åˆå§‹çŠ¶æ€
 			setMenuSelect("",R.id.message_image,R.drawable.icon_11_p,R.id.message_text);
 			setMenuSelect("",R.id.contacts_image,R.drawable.icon_2_p,R.id.contacts_text);
 			setMenuSelect("",R.id.news_image,R.drawable.icon_3_p,R.id.news_text);
@@ -111,11 +111,11 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 			int ClickInt = v.getId();
 			switch (ClickInt) {
 			case R.id.message_layout:
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 //				message.setBackground(getResources().getDrawable(
 //						R.drawable.home_btn_bg_d));
 
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 				setMenuSelect("select",R.id.message_image,R.drawable.icon_11_ps,R.id.message_text);
 
 				if (myHomePageFra == null) {
@@ -127,10 +127,10 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 
 				break;
 			case R.id.contacts_layout:
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 //				contacts.setBackground(getResources().getDrawable(
 //						R.drawable.home_btn_bg_d));
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 				setMenuSelect("select",R.id.contacts_image,R.drawable.icon_2_ps,R.id.contacts_text);
 
 				if (myReadFra == null) {
@@ -142,10 +142,10 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 
 				break;
 			case R.id.news_layout:
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 //				news.setBackground(getResources().getDrawable(
 //						R.drawable.home_btn_bg_d));
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 				setMenuSelect("select",R.id.news_image,R.drawable.icon_3_ps,R.id.news_text);
 
 				if (myNewsFra == null) {
@@ -157,7 +157,7 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 
 				break;
 			case R.id.setting_layout:
-				// ÉèÖÃÑ¡ÖĞ
+				// è®¾ç½®é€‰ä¸­
 //				setting.setBackground(getResources().getDrawable(
 //						R.drawable.home_btn_bg_d));
 				setMenuSelect("select",R.id.setting_image,R.drawable.icon_4_ps,R.id.setting_text);
@@ -176,18 +176,18 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 	};
 
 	/**
-	 * ÉèÖÃ×´Ì¬À¸µÄÑ¡ÖĞ×´Ì¬
-	 * @param type Ñ¡ÖĞ×´Ì¬(select/ÆäËü²»Ñ¡ÖĞ)
-	 * @param imResId Í¼Æ¬¿Ø¼şid
-	 * @param imPathResId Í¼Æ¬id
-     * @param tvResId ÎÄ×Ö¿Ø¼şid
+	 * è®¾ç½®çŠ¶æ€æ çš„é€‰ä¸­çŠ¶æ€
+	 * @param type é€‰ä¸­çŠ¶æ€(select/å…¶å®ƒä¸é€‰ä¸­)
+	 * @param imResId å›¾ç‰‡æ§ä»¶id
+	 * @param imPathResId å›¾ç‰‡id
+     * @param tvResId æ–‡å­—æ§ä»¶id
      */
 	private void  setMenuSelect(String type,int imResId,int imPathResId,int tvResId){
 		ImageView im=(ImageView)view.findViewById(imResId);
 		im.setImageResource(imPathResId);
 		TextView tv=(TextView)view.findViewById(tvResId);
 		if(type=="select"){
-			//Ñ¡ÖĞ×´Ì¬
+			//é€‰ä¸­çŠ¶æ€
 			tv.setTextColor(getResources().getColor(R.color.colorButtonSelectMenu));//
 		}else{
 			tv.setTextColor(getResources().getColor(R.color.colorButtonMenu));//
@@ -195,7 +195,7 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 	}
 	
 	/**
-	 * Òş²ØËéÆ¬
+	 * éšè—ç¢ç‰‡
 	 * @param tran
 	 */
 	private void HideFragement(FragmentTransaction tran){
@@ -215,7 +215,7 @@ public class PlaceholderFragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 	}
 
