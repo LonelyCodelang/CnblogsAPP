@@ -6,5 +6,6 @@ package com.mcnblogs.dto.myenum;
  * 说明:博客数据类型
  */
 public enum BlogType {
-    type1,type2
+    page1,
+    page2
 }
