@@ -102,7 +102,7 @@ public class BlogListAdapter extends ArrayAdapter<BlogListDTO> {
 //						APPUtil.ShowMsg(getContext(), arg3.getMessage());
 //					}
 //				});
-		if(!ImgUrl.contains(".gif")){
+		if(!ImgUrl.contains(".gif") && !ImgUrl.isEmpty()){
 			ImageView imgv = (ImageView) view.findViewById(R.id.avatarUrl);
 			Picasso.with(getContext())
 					.load(ImgUrl)

@@ -6,9 +6,14 @@ package com.mcnblogs.core;
 public class Config {
 
 	/**
+	 * 分页获取首页文章列表
+	 */
+	public  static  final  String siteHome_URL="http://wcf.open.cnblogs.com/blog/sitehome/paged/{pageIndex}/{pageSize}";
+
+	/**
 	 * 48小时文章阅读排行榜
 	 */
-	public static final String List48HoursTop_URL="http://wcf.open.cnblogs.com/blog/48HoursTopViewPosts/30";
+	public static final String List48HoursTop_URL="http://wcf.open.cnblogs.com/blog/48HoursTopViewPosts/{num}";
 
 	/**
 	 * 10天推荐排行榜

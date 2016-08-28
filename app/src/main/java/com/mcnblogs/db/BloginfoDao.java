@@ -60,7 +60,7 @@ public class BloginfoDao {
                 dto.getAuthorUrl(),
                 dto.getAuthorName(),
                 dto.getAvatarUrl(),
-                dto.getPublished(),
+                DateUtil.ToString(dto.getPublished()),
                 dto.getViews(),
                 dto.getDiggs(),
                 dto.getComments(),
@@ -128,11 +128,14 @@ public class BloginfoDao {
     /**
      * 判断文章是否存在
      * @param title 文章标题
-     * @return
+     * @return 返回行数
      */
-    public static int GetCountByTitle(String title){
+    public static int GetCountByTitle(String title,String pageType){
         int result=0;
         String sql=" select count(1) as count from  "+BlogInfoTable.TABLE_NAME+" where  "+BlogInfoTable.TITLE+"='"+title+"'";
+        if(!pageType.isEmpty()){
+            sql+=" and btype='"+pageType+"' ";
+        }
         Cursor c=getReadble().rawQuery(sql,null);
         c.moveToFirst();//光标移动到第一行
         result=c.getInt(c.getColumnIndex("count")); //c.getString(c.getColumnIndex("count"));
@@ -163,7 +166,7 @@ public class BloginfoDao {
             dto.setAuthorUrl(c.getString(c.getColumnIndex(BlogInfoTable.AUTHORURL)));
             dto.setAuthorName(c.getString(c.getColumnIndex(BlogInfoTable.AUTHORNAME)));
             dto.setAvatarUrl(c.getString(c.getColumnIndex(BlogInfoTable.AVATARURL)));
-            dto.setPublished(DateUtil.ToDate2(c.getString(c.getColumnIndex(BlogInfoTable.PUBLISHED))));
+            dto.setPublished(DateUtil.ToDate(c.getString(c.getColumnIndex(BlogInfoTable.PUBLISHED))));
             dto.setViews(c.getString(c.getColumnIndex(BlogInfoTable.VIEWS)));
             dto.setDiggs(c.getString(c.getColumnIndex(BlogInfoTable.DIGGS)));
             dto.setComments(c.getString(c.getColumnIndex(BlogInfoTable.COMMENTS)));

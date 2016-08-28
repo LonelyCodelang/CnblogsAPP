@@ -82,9 +82,9 @@ public class BlogListDTO implements Parcelable {
 		dest.writeString(this.views);
 		dest.writeString(this.diggs);
 		dest.writeString(this.comments);
-		dest.writeLong(this.published.getTime());
-		
-
+		if(this.published!=null){
+			dest.writeLong(this.published.getTime());
+		}
 	}
 
 	// 添加一个静态成员,名为CREATOR,该对象实现了Parcelable.Creator接口

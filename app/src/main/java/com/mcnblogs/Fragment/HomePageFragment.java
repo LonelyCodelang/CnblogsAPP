@@ -44,9 +44,9 @@ public class HomePageFragment extends Fragment {
 
 	private View view;
     private ArrayList<BlogListDTO> list;
-	private int startNum = 15;//开始页码15，每次加15
-	private int pageSize = 15;
-	private int pageIndex = 1;
+	private int startNum = 1;//开始页码15，每次加15
+	private int pageSizelv = 20;
+	private int pageIndexlv = 1;
 	private BlogListAdapter adapter;
 	SwipeRefreshLayout swip;//loading
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,23 +78,20 @@ public class HomePageFragment extends Fragment {
 			public void onRefresh() {
 				Log.i("首页","正在刷新");
 
-				startNum+=15;
-				LoadNetWorSource(startNum);//加载网络数据源
 
-				// 停止刷新
-				swip.setRefreshing(false);
 
-				//重新加载数据源
-				loadListSource();
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						startNum+=1;
+						LoadNetWorSource(startNum);//加载网络数据源
 
-//				new Handler().postDelayed(new Runnable() {
-//					@Override
-//					public void run() {
-//						Log.i("首页","停止刷新");
-//						// 停止刷新
-//						swip.setRefreshing(false);
-//					}
-//				}, 5000); // 5秒后发送消息，停止刷新
+
+						//Log.i("首页","停止刷新");
+						// 停止刷新
+						//swip.setRefreshing(false);
+					}
+				},500); // 5秒后发送消息，停止刷新
 			}
 		});
 	}
@@ -103,7 +100,8 @@ public class HomePageFragment extends Fragment {
 	 * 加载列表数据源
 	 */
 	private  void  loadListSource(){
-		list = BloginfoDao.getList(BlogType.page1.toString(),pageIndex,pageSize);
+		pageIndexlv=1;
+		list = BloginfoDao.getList(BlogType.page1.toString(),pageIndexlv,pageSizelv);
 		ListView lv = (ListView) view.findViewById(R.id.listView1);
 		adapter = new BlogListAdapter(getActivity(),
 				R.layout.homepage_item, list);
@@ -121,7 +119,8 @@ public class HomePageFragment extends Fragment {
 	 */
 	private void LoadNetWorSource(int num) {
 		Log.i("页码:",Integer.toString(startNum));
-		String url =Config.List10DayTop_URL.replace("{num}",Integer.toString(num));
+		//String url =Config.List10DayTop_URL.replace("{num}",Integer.toString(num));
+		String url =Config.siteHome_URL.replace("{pageIndex}",Integer.toString(num)).replace("{pageSize}",Integer.toString(pageSizelv));
 		HttpUtil.get(url, new AsyncHttpResponseHandler() {
 
 			@Override
@@ -134,6 +133,9 @@ public class HomePageFragment extends Fragment {
 				} else {
 					// 数据返回异常
 					APPUtil.ShowMsgNetError(getActivity());
+
+					// load停止刷新
+					swip.setRefreshing(false);
 				}
 			}
 
@@ -150,6 +152,8 @@ public class HomePageFragment extends Fragment {
 				// TODO 自动生成的方法存根
 				String errorStr = error.getMessage();// 把错误信息打印出轨迹来
 				APPUtil.ShowMsg(getActivity(), " 网络异常情况");
+				// load停止刷新
+				swip.setRefreshing(false);
 			}
 		});
 	}
@@ -162,15 +166,27 @@ public class HomePageFragment extends Fragment {
 		//批量获取网络新数据
 		List<BlogListDTO> list = BlogJsonHelper.JsonToList(json);
 
+		int insertCount=0;
 		for (BlogListDTO item :list){
-			int count = BloginfoDao.GetCountByTitle(item.getTitle());
+			int count = BloginfoDao.GetCountByTitle(item.getTitle(),BlogType.page1.toString());
 			if(count<=0){
 				//插入数据库
 				BloginfoDao.insert(item,BlogType.page1.toString());
+				insertCount++;
 				Log.i("首页文章插入",item.getTitle());
 				//BloginfoDao.insertBatch(list, BlogType.type1.toString());
 			}
 		}
+		if(insertCount==0){
+			APPUtil.ShowMsg(getActivity(),"目前没有新的文章更新");
+		}else {
+			APPUtil.ShowMsg(getActivity(),"为您更新了"+insertCount+"篇文章");
+
+			//重新加载数据源
+			loadListSource();
+		}
+		// load停止刷新
+		swip.setRefreshing(false);
 	}
 
 	/**
@@ -200,18 +216,21 @@ public class HomePageFragment extends Fragment {
 	 */
 	private AbsListView.OnScrollListener myScrol=new AbsListView.OnScrollListener() {
 		@Override
-		public void onScrollStateChanged(AbsListView absListView, int i) {
-
+		public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+//			if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+//				if (absListView.getLastVisiblePosition() == absListView.getCount() - 1) {
+//					APPUtil.ShowMsg(getActivity(),"到底部了"+startNum);
+//				}
+//			}
 		}
 
 		@Override
 		public void onScroll(AbsListView view, int firstVisibleItem,
 							 int visibleItemCount, int totalItemCount) {
 			if (firstVisibleItem + visibleItemCount == totalItemCount) {//判断是不是最后一个
-				APPUtil.ShowMsg(getActivity(),"到底部了"+startNum);
-				Log.i("页码:",Integer.toString(startNum));
-				//startNum+=15;
-				//Load(startNum);
+				//APPUtil.ShowMsg(getActivity(),"到底部了"+startNum);
+				pageIndexlv=pageIndexlv+1;
+				getListPage(pageIndexlv,pageSizelv);
 			}
 		}
 	};
@@ -223,8 +242,10 @@ public class HomePageFragment extends Fragment {
      */
 	private void getListPage(int pageIndex,int pageSize){
 		ArrayList<BlogListDTO> listSouece = BloginfoDao.getList(BlogType.page1.toString(),pageIndex,pageSize);
-		list.addAll(listSouece);
-		adapter.notifyDataSetChanged();
+		if(listSouece.size()>0){
+			list.addAll(listSouece);
+			adapter.notifyDataSetChanged();
+		}
 	}
 
 }
